@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-	private void Update()
+	void Update()
 	{
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
