@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour 
 {
 
-    public GameObject hazard;
+    public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCountMax;
     public float spawnWait;
@@ -47,10 +47,6 @@ public class GameController : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
             }
-            //if(Input.get)
-            // {
-            //  SceneManager.LoadScene(0);
-            //}
         }
     }
 
@@ -99,6 +95,7 @@ public class GameController : MonoBehaviour
 
     void SpawnHazard()
     {
+        GameObject hazard = hazards[Random.Range(0, hazards.Length)];
         Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
         Instantiate(hazard, spawnPosition, Quaternion.identity);
     }
