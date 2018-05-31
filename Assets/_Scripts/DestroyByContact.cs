@@ -10,6 +10,7 @@ public class DestroyByContact : MonoBehaviour {
 
     readonly string boundary = "Boundary";
     readonly string player = "Player";
+    readonly string enemy = "Enemy";
 
     private void Start()
     {
@@ -24,14 +25,18 @@ public class DestroyByContact : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other)
-	{
-        if(other.tag.Equals(boundary))
+    {
+        if (other.CompareTag(boundary) || other.CompareTag(enemy))
         {
             return;
         }
-        InitExplosionAnimation();
 
-        if (other.tag.Equals(player))
+        if(explosion != null)
+        {
+            InitExplosionAnimation();
+        }
+       
+        if (other.CompareTag(player))
         {
             InitPlayerExplosionAnimation(other);
             gameController.GameOver();
